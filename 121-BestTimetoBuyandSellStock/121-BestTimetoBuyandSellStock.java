@@ -1,27 +1,16 @@
-// Last updated: 9/19/2025, 3:20:13 AM
-class MinStack {
-    private Deque<Integer> stk1 = new ArrayDeque<>();
-    private Deque<Integer> stk2 = new ArrayDeque<>();
-
-    public MinStack() {
-        stk2.push(Integer.MAX_VALUE);
-    }
-
-    public void push(int val) {
-        stk1.push(val);
-        stk2.push(Math.min(val, stk2.peek()));
-    }
-
-    public void pop() {
-        stk1.pop();
-        stk2.pop();
-    }
-
-    public int top() {
-        return stk1.peek();
-    }
-
-    public int getMin() {
-        return stk2.peek();
+// Last updated: 9/19/2025, 3:42:44 AM
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int low=0;
+        int high=nums.length-1;
+        while(low<high){
+            int mid=low+(high-low)/2;
+            if(nums[mid]>nums[mid+1]){
+                high=mid;
+            }else{
+                low=mid+1;
+            }
+        }
+        return low;
     }
 }
