@@ -1,20 +1,10 @@
-// Last updated: 9/22/2025, 8:23:59 AM
+// Last updated: 9/22/2025, 8:39:55 AM
+import java.math.BigInteger;
 class Solution {
-    public List<String> fizzBuzz(int n) {
-        List<String> result=new ArrayList<>();
-        for(int i=1;i<=n;i++){
-            if(i%3 ==0 && i%5==0){
-                result.add("FizzBuzz");
-            }
-            else if(i%3==0){
-                result.add("Fizz");
-            }
-            else if(i%5==0){
-                result.add("Buzz");
-            }else{
-                result.add(Integer.toString(i));
-            }
-        }
-        return result;
+    public String addStrings(String num1, String num2) {
+        BigInteger big1 = new BigInteger(num1);
+        BigInteger big2 = new BigInteger(num2);
+        BigInteger c=big1.add(big2);
+        return c.toString();
     }
 }
