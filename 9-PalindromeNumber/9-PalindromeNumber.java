@@ -1,16 +1,24 @@
-// Last updated: 8/7/2025, 11:39:37 AM
+// Last updated: 9/22/2025, 10:15:17 PM
 class Solution {
-    public boolean isPalindrome(int x) {
-        String h=Integer.toString(x);
-        int i=0;
-        int j=h.length()-1;
-        while(i<j){
-            if(h.charAt(i)!=h.charAt(j)){
-                return false;
+    public int romanToInt(String s) {
+        Map<Character, Integer> map=new HashMap<>();
+        map.put('I',1);
+        map.put('V',5);
+        map.put('X',10);
+        map.put('L',50);
+        map.put('C',100);
+        map.put('D',500);
+        map.put('M',1000);
+        int ans=0;
+        for(int i=0;i<s.length()-1;i++){
+            if(map.get(s.charAt(i))< map.get(s.charAt(i+1))){
+                ans-=map.get(s.charAt(i));
             }
-            i++;
-            j--;
-        }       
-        return true; 
+            else{
+                ans+=map.get(s.charAt(i));
+            }
+        }
+        ans += map.get(s.charAt(s.length() - 1));
+        return ans;
     }
 }
