@@ -1,13 +1,18 @@
-// Last updated: 9/22/2025, 6:27:30 PM
+// Last updated: 9/22/2025, 7:08:07 PM
 class Solution {
-    public int removeDuplicates(int[] nums) {
-        int i=0;
-        for(int j=1;j<nums.length;j++){
-            if(nums[j]!=nums[i]){
-                i++;
-                nums[i]=nums[j];
+    public int findRadius(int[] houses, int[] heaters) {
+        int[] an=new int[houses.length];
+        
+        for(int i=0;i<houses.length;i++){
+            int cal=Integer.MAX_VALUE;
+            for(int j=0;j<heaters.length;j++){
+                int ans=Math.abs(houses[i]-heaters[j]);
+                cal=Math.min(ans,cal);
             }
+            
+            an[i]=cal;
         }
-        return i+1;
+        Arrays.sort(an);
+        return an[an.length-1];
     }
 }
