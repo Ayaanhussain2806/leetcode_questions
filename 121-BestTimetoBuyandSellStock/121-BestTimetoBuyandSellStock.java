@@ -1,16 +1,13 @@
-// Last updated: 9/19/2025, 3:42:44 AM
+// Last updated: 9/26/2025, 1:43:07 PM
 class Solution {
-    public int findPeakElement(int[] nums) {
-        int low=0;
-        int high=nums.length-1;
-        while(low<high){
-            int mid=low+(high-low)/2;
-            if(nums[mid]>nums[mid+1]){
-                high=mid;
-            }else{
-                low=mid+1;
-            }
+    public int maxProfit(int[] prices) {
+        int mini=prices[0];
+        int profit=0;
+        for(int i=1;i<prices.length;i++){
+            int cost=prices[i]-mini;
+            profit=Math.max(cost,profit);
+            mini=Math.min(prices[i],mini);
         }
-        return low;
+        return profit;
     }
 }
