@@ -1,26 +1,11 @@
-// Last updated: 9/26/2025, 2:09:55 PM
+// Last updated: 9/26/2025, 2:18:14 PM
 class Solution {
-    int totalFruit(int[] fruits) {
-    Map<Integer, Integer> basket = new HashMap<>();
-    int left = 0;
-    int right = 0;
-    int maxFruits = 0;
-    for (right = 0; right < fruits.length; right++) {
-        int currentCount = basket.getOrDefault(fruits[right], 0);
-        basket.put(fruits[right], currentCount + 1);
-        while (basket.size() > 2) {
-            int fruitCount = basket.get(fruits[left]);
-            if (fruitCount == 1) {
-                basket.remove(fruits[left]);
-            } else {
-                basket.put(fruits[left], fruitCount - 1);
+    public int search(int[] nums, int target) {
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target){
+                return i;
             }
-            left++;
         }
-        maxFruits = Math.max(maxFruits, right - left + 1);
+        return -1;
     }
-
-    return maxFruits;
-}
-
 }
