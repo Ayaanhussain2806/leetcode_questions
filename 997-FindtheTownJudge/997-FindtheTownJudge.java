@@ -1,18 +1,23 @@
-// Last updated: 9/26/2025, 9:55:22 PM
+// Last updated: 9/27/2025, 12:03:28 AM
 class Solution {
-    public int findJudge(int n, int[][] trust) {
-        int[] indegree=new int[n+1];
-        for(int[] arr:trust){
-            int a=arr[0];
-            int b=arr[1];
-            indegree[a]--;
-            indegree[b]++;
-        }
-        for(int i=1;i<=n;i++){
-            if(indegree[i]==n-1){
-                return i;
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        int max=Integer.MAX_VALUE;
+        for(int k=0;k<=nums.length-3;k++){
+            int i=k+1;
+            int j=nums.length-1;
+            while(i<j){
+                int sum=nums[i]+nums[j]+nums[k];
+                if(Math.abs(target-sum)<Math.abs(target-max)){
+                    max=sum;
+                }
+                if(target>sum){
+                    i++;
+                }else{
+                    j--;
+                }
             }
         }
-        return -1;
+        return max;
     }
 }
