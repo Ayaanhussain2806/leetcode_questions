@@ -1,13 +1,26 @@
-// Last updated: 9/26/2025, 1:43:07 PM
+// Last updated: 9/26/2025, 2:09:55 PM
 class Solution {
-    public int maxProfit(int[] prices) {
-        int mini=prices[0];
-        int profit=0;
-        for(int i=1;i<prices.length;i++){
-            int cost=prices[i]-mini;
-            profit=Math.max(cost,profit);
-            mini=Math.min(prices[i],mini);
+    int totalFruit(int[] fruits) {
+    Map<Integer, Integer> basket = new HashMap<>();
+    int left = 0;
+    int right = 0;
+    int maxFruits = 0;
+    for (right = 0; right < fruits.length; right++) {
+        int currentCount = basket.getOrDefault(fruits[right], 0);
+        basket.put(fruits[right], currentCount + 1);
+        while (basket.size() > 2) {
+            int fruitCount = basket.get(fruits[left]);
+            if (fruitCount == 1) {
+                basket.remove(fruits[left]);
+            } else {
+                basket.put(fruits[left], fruitCount - 1);
+            }
+            left++;
         }
-        return profit;
+        maxFruits = Math.max(maxFruits, right - left + 1);
     }
+
+    return maxFruits;
+}
+
 }
