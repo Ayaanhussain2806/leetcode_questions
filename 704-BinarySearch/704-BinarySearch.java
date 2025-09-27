@@ -1,9 +1,16 @@
-// Last updated: 9/27/2025, 1:10:43 PM
+// Last updated: 9/27/2025, 1:48:49 PM
 class Solution {
-    public int maximumProduct(int[] nums) {
-        Arrays.sort(nums);
-        int c=nums[nums.length-1]*nums[nums.length-2]*nums[nums.length-3];
-        int d=nums[0]*nums[1]*nums[nums.length-1];
-        return Math.max(c,d);
+    public int findPeakElement(int[] nums) {
+        int low=0;
+        int high=nums.length-1;
+        while(low<high){
+            int mid=low+(high-low)/2;
+            if(nums[mid]>nums[mid+1]){
+                high=mid;
+            }else{
+                low=mid+1;
+            }
+        }
+        return low;
     }
 }
