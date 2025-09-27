@@ -1,31 +1,26 @@
-// Last updated: 9/27/2025, 9:21:10 PM
+// Last updated: 9/27/2025, 9:22:19 PM
+import java.util.*;
 class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        int first = findBound(nums, target, true);  
-        int last = findBound(nums, target, false); 
-        return new int[]{first, last};
-    }
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0) return new int[0];
+        
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        Deque<Integer> dq = new ArrayDeque<>(); 
 
-    private int findBound(int[] nums, int target, boolean isFirst) {
-        int left = 0, right = nums.length - 1;
-        int ans = -1;
+        for (int i = 0; i < n; i++) {
+            while (!dq.isEmpty() && dq.peekFirst() <= i - k) {
+                dq.pollFirst();
+            }
+           while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i]) {
+                dq.pollLast();
+            }
+            dq.offerLast(i);
 
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-
-            if (nums[mid] == target) {
-                ans = mid; // possible answer
-                if (isFirst) {
-                    right = mid - 1; 
-                } else {
-                    left = mid + 1;  
-                }
-            } else if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
+            if (i >= k - 1) {
+                result[i - k + 1] = nums[dq.peekFirst()];
             }
         }
-        return ans;
+        return result;
     }
 }
