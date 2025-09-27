@@ -1,11 +1,11 @@
-// Last updated: 9/27/2025, 10:58:02 PM
+// Last updated: 9/27/2025, 11:08:56 PM
 class Solution {
     public boolean isPerfectSquare(int num) {
-        int odd=1;
-        while(num>0){
-            num-=odd;
-            odd+=2;
+        int a =(int) Math.sqrt(num);
+        if(a*a==num) {
+            return true;
         }
-        return num==0;
+        return false;
+        
     }
 }
