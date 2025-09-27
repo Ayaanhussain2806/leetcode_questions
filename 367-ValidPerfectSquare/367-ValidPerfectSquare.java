@@ -1,15 +1,11 @@
-// Last updated: 8/7/2025, 11:37:31 AM
+// Last updated: 9/27/2025, 10:58:02 PM
 class Solution {
     public boolean isPerfectSquare(int num) {
-        long left = 1, right = num;
-        while (left < right) {
-            long mid = (left + right) >>> 1;
-            if (mid * mid >= num) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
+        int odd=1;
+        while(num>0){
+            num-=odd;
+            odd+=2;
         }
-        return left * left == num;
+        return num==0;
     }
 }
