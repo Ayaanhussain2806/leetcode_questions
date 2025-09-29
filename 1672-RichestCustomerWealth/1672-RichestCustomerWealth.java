@@ -1,14 +1,18 @@
-// Last updated: 9/29/2025, 1:17:11 PM
+// Last updated: 9/29/2025, 1:39:25 PM
 class Solution {
-    public int countNegatives(int[][] grid) {
-        int count=0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[0].length;j++){
-                if(grid[i][j]<0){
-                    count++;
-                }
-            }
+    public int diagonalSum(int[][] mat) {
+        int sum=0;
+        int left=mat.length;
+        int ans=left/2;
+        for(int i=0;i<mat.length;i++){
+            sum+=mat[i][i];
         }
-        return count;
+        for(int i=mat.length-1;i>=0;i--){
+            sum+=mat[i][(left-1)-i];
+        }
+        if(left%2!=0){
+            sum-=mat[ans][ans];
+        }
+        return sum;
     }
 }
