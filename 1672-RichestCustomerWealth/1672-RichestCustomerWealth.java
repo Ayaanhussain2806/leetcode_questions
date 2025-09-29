@@ -1,18 +1,26 @@
-// Last updated: 9/29/2025, 1:39:25 PM
+// Last updated: 9/29/2025, 2:30:31 PM
 class Solution {
-    public int diagonalSum(int[][] mat) {
-        int sum=0;
-        int left=mat.length;
-        int ans=left/2;
-        for(int i=0;i<mat.length;i++){
-            sum+=mat[i][i];
+    public void rotate(int[][] matrix) {
+        for(int i=0;i<matrix.length;i++){
+            for(int j=i+1;j<matrix[0].length;j++){
+                int temp=matrix[i][j];
+                matrix[i][j]=matrix[j][i];
+                matrix[j][i]=temp;
+            }
         }
-        for(int i=mat.length-1;i>=0;i--){
-            sum+=mat[i][(left-1)-i];
+        for(int i=0;i<matrix.length;i++){
+            reverse(matrix[i]);
         }
-        if(left%2!=0){
-            sum-=mat[ans][ans];
-        }
-        return sum;
     }
+        public static void reverse(int[] arr){
+            int i=0;
+            int j=arr.length-1;
+            while(i<j){
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                i++;
+                j--;
+            }
+        }
 }
