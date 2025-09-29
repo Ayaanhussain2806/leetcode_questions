@@ -1,4 +1,4 @@
-// Last updated: 9/29/2025, 10:56:29 PM
+// Last updated: 9/29/2025, 10:56:43 PM
 class Solution {
     public int numIslands(char[][] grid) {
         int count = 0;
@@ -13,7 +13,7 @@ class Solution {
         return count;
     }
 
-    public void dfs(char[][] grid, int i, int j) {
+    private void dfs(char[][] grid, int i, int j) {
         
         if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0') {
             return;
