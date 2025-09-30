@@ -1,6 +1,4 @@
-// Last updated: 9/30/2025, 11:55:59 PM
-import java.util.*;
-
+// Last updated: 9/30/2025, 11:57:34 PM
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> result = new ArrayList<>();
