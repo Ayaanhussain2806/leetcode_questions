@@ -1,20 +1,36 @@
-// Last updated: 9/30/2025, 10:23:57 PM
+// Last updated: 9/30/2025, 11:55:59 PM
+import java.util.*;
+
 class Solution {
-    public boolean checkInclusion(String s1, String s2) {
-        int n=s1.length();
-        int m=s2.length();
-        char[] chars = s1.toCharArray();
-        Arrays.sort(chars);
-        String sorted = new String(chars);
-        for(int i=0;i<=m-n;i++){
-            String sub=s2.substring(i,i+n);
-            char[] cha = sub.toCharArray();
-            Arrays.sort(cha);
-            String s = new String(cha);
-            if(sorted.equals(s)){
-                return true;
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> result = new ArrayList<>();
+        int n = s.length(), m = p.length();
+        if (m > n) return result;
+
+        int[] countP = new int[26]; 
+        int[] countS = new int[26]; 
+
+        for (char c : p.toCharArray()) {
+            countP[c - 'a']++;
+        }
+
+        for (int i = 0; i < m; i++) {
+            countS[s.charAt(i) - 'a']++;
+        }
+
+        if (Arrays.equals(countP, countS)) {
+            result.add(0);
+        }
+
+        for (int i = m; i < n; i++) {
+            countS[s.charAt(i) - 'a']++;     
+            countS[s.charAt(i - m) - 'a']--;  
+
+            if (Arrays.equals(countP, countS)) {
+                result.add(i - m + 1);
             }
         }
-        return false;
+
+        return result;
     }
 }
