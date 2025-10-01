@@ -1,26 +1,16 @@
-// Last updated: 10/1/2025, 2:41:42 PM
+// Last updated: 10/1/2025, 10:58:56 PM
 class Solution {
-    public boolean lemonadeChange(int[] bills) {
-        int f=0;
-        int t=0;
-        for(int bill:bills){
-            if(bill==5){
-                f++;
-            }
-            else if(bill==10){
-                t++;
-                f--;
-            }
-            else if(t>0){
-                t--;
-                f--;
-            }else{
-                f-=3;
-            }
-        if(f<0){
-                return false;
-            }
+    public int[][] reconstructQueue(int[][] people) {
+        Arrays.sort(people, (a, b) -> {
+            if (a[0] == b[0]) return a[1] - b[1];
+            return b[0] - a[0]; 
+        });
+
+        List<int[]> list = new LinkedList<>();
+        for (int[] p : people) {
+            list.add(p[1], p); 
         }
-        return true;
+
+        return list.toArray(new int[people.length][]);
     }
 }
