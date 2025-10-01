@@ -1,4 +1,4 @@
-// Last updated: 10/1/2025, 3:32:22 PM
+// Last updated: 10/1/2025, 3:34:45 PM
 class Solution {
     public boolean isBalanced(String num) {
         int sum1=0;
