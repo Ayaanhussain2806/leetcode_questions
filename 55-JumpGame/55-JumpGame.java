@@ -1,4 +1,4 @@
-// Last updated: 8/7/2025, 11:39:02 AM
+// Last updated: 10/1/2025, 11:55:15 AM
 class Solution {
     public boolean canJump(int[] nums) {
         int mx = 0;
