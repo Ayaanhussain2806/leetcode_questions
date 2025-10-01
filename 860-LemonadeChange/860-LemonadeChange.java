@@ -1,16 +1,19 @@
-// Last updated: 10/1/2025, 10:58:56 PM
+// Last updated: 10/1/2025, 11:00:47 PM
 class Solution {
-    public int[][] reconstructQueue(int[][] people) {
-        Arrays.sort(people, (a, b) -> {
-            if (a[0] == b[0]) return a[1] - b[1];
-            return b[0] - a[0]; 
-        });
+    public int numRescueBoats(int[] people, int limit) {
+        Arrays.sort(people); 
+        int left = 0, right = people.length - 1;
+        int boats = 0;
 
-        List<int[]> list = new LinkedList<>();
-        for (int[] p : people) {
-            list.add(p[1], p); 
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
+                left++; 
+                right--; 
+            } else {
+                right--; 
+            }
+            boats++; 
         }
-
-        return list.toArray(new int[people.length][]);
+        return boats;
     }
 }
