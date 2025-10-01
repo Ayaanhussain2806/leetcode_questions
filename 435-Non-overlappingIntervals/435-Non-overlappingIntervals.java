@@ -1,6 +1,4 @@
-// Last updated: 10/1/2025, 10:54:51 PM
-import java.util.*;
-
+// Last updated: 10/1/2025, 10:54:58 PM
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
         
