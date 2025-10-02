@@ -1,19 +1,13 @@
-// Last updated: 10/2/2025, 3:47:42 PM
+// Last updated: 10/2/2025, 4:02:10 PM
 class Solution {
-    public boolean checkDistances(String s, int[] distance) {
-        int[] arr=new int[26];
-        Arrays.fill(arr,-1);
-            for(int i=0;i<s.length();i++){
-                int ch=s.charAt(i)-'a';
-                if(arr[ch]==-1){
-                    arr[ch]=i;
-                }else{
-                    int dist=i-arr[ch]-1;
-                    if(dist!=distance[ch]){
-                        return false;
-                    }
+    public boolean checkIfExist(int[] arr) {
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]==2*arr[j] || arr[j]==arr[i]*2){
+                    return true;
                 }
             }
-        return true;
+        }
+        return false;
     }
 }
