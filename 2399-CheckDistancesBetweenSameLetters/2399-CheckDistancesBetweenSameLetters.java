@@ -1,4 +1,4 @@
-// Last updated: 10/2/2025, 3:46:26 PM
+// Last updated: 10/2/2025, 3:47:42 PM
 class Solution {
     public boolean checkDistances(String s, int[] distance) {
         int[] arr=new int[26];
