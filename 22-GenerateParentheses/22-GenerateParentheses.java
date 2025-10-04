@@ -1,20 +1,20 @@
-// Last updated: 8/7/2025, 11:39:27 AM
+// Last updated: 10/4/2025, 1:41:19 PM
 class Solution {
     public List<String> generateParenthesis(int n) {
-        List<String> ll = new ArrayList<>();
-        GeneratePar(n, 0, 0, "", ll);
+        List<String> ll=new ArrayList<>();
+        solve(n,0,0,"",ll);
         return ll;
+
     }
-     public static void GeneratePar(int n, int open, int close, String ans, List<String> ll) {
-        if (open == n && close == n) {
+    public static void solve(int n,int open,int close, String ans,List<String> ll){
+        if(open==n && close==n){
             ll.add(ans);
-            return;
+            return ;
         }
-        if(open<n){
-        GeneratePar(n, open + 1, close, ans + "(",ll);
+        if(open>n || close>open){
+            return ;
         }
-        if(close<open){
-        GeneratePar(n, open, close + 1, ans + ")",ll);
-        }
+        solve(n,open+1,close,ans+"(",ll);
+        solve(n,open,close+1,ans+")",ll);
     }
 }
