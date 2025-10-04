@@ -1,6 +1,7 @@
-// Last updated: 10/4/2025, 3:02:58 PM
+// Last updated: 10/4/2025, 3:10:53 PM
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
+        Arrays.sort(nums);
         boolean[] visit=new boolean[nums.length];
         List<List<Integer>> ans=new ArrayList<>();
         List<Integer> ll=new ArrayList<>();
