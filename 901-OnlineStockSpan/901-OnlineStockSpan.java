@@ -1,19 +1,19 @@
-// Last updated: 10/6/2025, 11:02:20 PM
-class StockSpanner {
-    public Stack<int[]> stack;
+// Last updated: 10/6/2025, 11:03:57 PM
+class Solution {
+    public String simplifyPath(String path) {
+        Stack<String> stack = new Stack<>();
+        String[] parts = path.split("/");
 
-    public StockSpanner() {
-        stack = new Stack<>();
-    }
-
-    public int next(int price) {
-        int span = 1;
-
-        while (!stack.isEmpty() && stack.peek()[0] <= price) {
-            span += stack.pop()[1];
+        for (String part : parts) {
+            if (part.equals("") || part.equals(".")) {
+                continue; 
+            } else if (part.equals("..")) {
+                if (!stack.isEmpty()) stack.pop(); 
+            } else {
+                stack.push(part); 
+            }
         }
 
-        stack.push(new int[]{price, span});
-        return span;
+        return "/" + String.join("/", stack);
     }
 }
