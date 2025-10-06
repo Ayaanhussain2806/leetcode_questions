@@ -1,31 +1,25 @@
-// Last updated: 10/6/2025, 1:06:31 PM
+// Last updated: 10/6/2025, 1:20:04 PM
 class Solution {
-    public boolean isMatch(String s, String p) {
-        int m = s.length();
-        int n = p.length();
-        boolean[][] dp = new boolean[m + 1][n + 1];
-
-        dp[0][0] = true;
-
-        for (int j = 1; j <= n; j++) {
-            if (p.charAt(j - 1) == '*'){
-                dp[0][j] = dp[0][j - 1];
+    public boolean predictTheWinner(int[] nums) {
+        int n = nums.length;
+        int[][] memo = new int[n][n];
+        // Initialize with a special value to indicate "uncomputed"
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                memo[i][j] = Integer.MIN_VALUE;
             }
         }
+        return helper(nums, 0, n - 1, memo) >= 0;
+    }
 
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                char sc = s.charAt(i - 1);
-                char pc = p.charAt(j - 1);
+    private int helper(int[] nums, int i, int j, int[][] memo) {
+        if (i == j) return nums[i];
+        if (memo[i][j] != Integer.MIN_VALUE) return memo[i][j];
 
-                if (pc == sc || pc == '?') {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else if (pc == '*') {
-                    dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
-                }
-            }
-        }
+        int pickLeft = nums[i] - helper(nums, i + 1, j, memo);
+        int pickRight = nums[j] - helper(nums, i, j - 1, memo);
 
-        return dp[m][n];
+        memo[i][j] = Math.max(pickLeft, pickRight);
+        return memo[i][j];
     }
 }
