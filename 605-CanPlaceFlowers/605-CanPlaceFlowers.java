@@ -1,13 +1,19 @@
-// Last updated: 10/6/2025, 7:24:28 PM
+// Last updated: 10/6/2025, 10:19:52 PM
 class Solution {
-    public int removeDuplicates(int[] nums) {
+    public int minSubArrayLen(int target, int[] nums) {
+        int min=Integer.MAX_VALUE;
         int i=0;
-        for(int j=1;j<nums.length;j++){
-            if(nums[i]!=nums[j]){
+        int j=0;
+        int sum=0;
+        while(j<nums.length){
+            sum+=nums[j];
+            while(target<=sum){
+                min=Math.min(min,j-i+1);
+                sum-=nums[i];
                 i++;
-                nums[i]=nums[j];
             }
+            j++;
         }
-        return i+1;
+        return min==Integer.MAX_VALUE ? 0 : min;
     }
 }
