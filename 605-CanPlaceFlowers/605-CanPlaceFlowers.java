@@ -1,19 +1,19 @@
-// Last updated: 10/6/2025, 10:19:52 PM
+// Last updated: 10/6/2025, 10:44:12 PM
 class Solution {
-    public int minSubArrayLen(int target, int[] nums) {
-        int min=Integer.MAX_VALUE;
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
         int i=0;
         int j=0;
-        int sum=0;
+        int p=1;
+        int ans=0;
         while(j<nums.length){
-            sum+=nums[j];
-            while(target<=sum){
-                min=Math.min(min,j-i+1);
-                sum-=nums[i];
+            p*=nums[j];
+            while(p>=k && i<=j){
+                p/=nums[i];
                 i++;
             }
+            ans=ans+(j-i+1);
             j++;
         }
-        return min==Integer.MAX_VALUE ? 0 : min;
+        return ans;
     }
 }
