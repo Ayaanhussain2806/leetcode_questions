@@ -1,13 +1,24 @@
-// Last updated: 10/7/2025, 11:24:52 AM
+// Last updated: 10/7/2025, 10:22:48 PM
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
-    public int strStr(String haystack, String needle) {
-        int n=haystack.length();
-        int m=needle.length();
-        for(int i=0;i<=n-m;i++){
-            if(haystack.substring(i,i+m).equals(needle)){
-                return i;
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode cur = head;
+        while (cur != null && cur.next != null) {
+            if (cur.val == cur.next.val) {
+                cur.next = cur.next.next;
+            } else {
+                cur = cur.next;
             }
         }
-        return -1;
+        return head;
     }
 }
