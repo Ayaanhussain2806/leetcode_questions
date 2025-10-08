@@ -1,20 +1,19 @@
-// Last updated: 9/27/2025, 11:29:17 PM
+// Last updated: 10/8/2025, 11:32:53 AM
 class Solution {
-    public int findMinArrowShots(int[][] points) {
-        if (points.length == 0){
-            return 0;
-        }
-        Arrays.sort(points, (a, b) -> Integer.compare(a[1], b[1]));
-
-        int arrows = 1;
-        int end = points[0][1]; 
-        for (int i = 1; i < points.length; i++) {
-            if (points[i][0] > end) {
-                arrows++;
-                end = points[i][1];
+    public int minSubArrayLen(int target, int[] nums) {
+        int max=Integer.MAX_VALUE;
+        int i=0;
+        int j=0;
+        int sum=0;
+        while(j<nums.length){
+            sum+=nums[j];
+            while(target<=sum){
+                max=Math.min(max,j-i+1);
+                sum-=nums[i];
+                i++;
             }
+            j++;
         }
-
-        return arrows;
+        return max==Integer.MAX_VALUE ? 0 : max;
     }
 }
