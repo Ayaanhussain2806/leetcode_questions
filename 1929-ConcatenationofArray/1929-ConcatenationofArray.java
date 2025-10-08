@@ -1,15 +1,14 @@
-// Last updated: 10/8/2025, 10:30:42 PM
+// Last updated: 10/8/2025, 10:43:18 PM
 class Solution {
     public int[] getConcatenation(int[] nums) {
         int l=nums.length;
-        int nl=l+l;
-        int[] ans = new int[nl];
-        for (int i=0;i<nl;i++){
-            ans[i]=nums[i%l];   
+        int[] arr=new int[2*l];
+        for(int i=0;i<nums.length;i++){
+            arr[i]=nums[i];
         }
-       
-        
-        return ans;
+        for(int i=0;i<nums.length;i++){
+            arr[nums.length+i]=nums[i];
+        }
+        return arr;
     }
-    
 }
