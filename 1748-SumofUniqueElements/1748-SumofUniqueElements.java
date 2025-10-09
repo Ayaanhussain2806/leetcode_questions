@@ -1,18 +1,14 @@
-// Last updated: 10/10/2025, 3:30:29 AM
+// Last updated: 10/10/2025, 3:38:36 AM
 class Solution {
     public int sumOfUnique(int[] nums) {
-        Arrays.sort(nums);
+        Map<Integer,Integer> freq=new HashMap<>();
+        for(int num:nums){
+            freq.put(num,freq.getOrDefault(num,0) + 1);
+        }
         int sum=0;
-        
-        for(int i=0;i<nums.length;i++){
-            int count=0;
-            for(int j=0;j<nums.length;j++){
-                if(nums[i]==nums[j]){
-                    count++;
-                }
-            }
-            if(count==1){
-                sum+=nums[i];
+        for(int i:freq.keySet()){
+            if(freq.get(i)==1){
+                sum+=i;
             }
         }
         return sum;
