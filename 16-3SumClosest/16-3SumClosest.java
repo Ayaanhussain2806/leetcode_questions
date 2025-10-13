@@ -1,19 +1,27 @@
-// Last updated: 10/13/2025, 9:48:00 PM
+// Last updated: 10/13/2025, 10:46:31 PM
 class Solution {
-    public int numSubarrayProductLessThanK(int[] nums, int k) {
-        int i=0;
-        int j=0;
-        int p=1;
-        int ans=0;
-        while(j<nums.length){
-            p*=nums[j];
-            while(p>=k && i<=j){
-                p/=nums[i];
-                i++;
-            }
-            ans=ans+(j-i+1);
-            j++;
+    public long minimumTime(int[] time, int totalTrips) {
+        int min=Integer.MAX_VALUE;
+        for(int i:time){
+            min=Math.min(i,min);
         }
-        return ans;
+        long left=1;
+        long right=(long)min*totalTrips;
+        while(left<right){
+            long mid=left+(right-left)/2;
+            if(ispossible(time,mid,totalTrips)){
+                right=mid;
+            }else{
+                left=mid+1;
+            }
+        }
+        return left;
+    }
+    public static boolean ispossible(int[] time,long givenTime,long totalTrips){
+        long t=0;
+        for(int bus:time){
+            t+=givenTime/bus;
+        }
+        return t>=totalTrips;
     }
 }
