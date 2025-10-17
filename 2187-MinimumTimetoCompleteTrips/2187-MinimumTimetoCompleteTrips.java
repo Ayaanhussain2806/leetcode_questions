@@ -1,9 +1,9 @@
-// Last updated: 10/17/2025, 8:37:29 PM
+// Last updated: 10/17/2025, 8:38:40 PM
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
         int min=Integer.MAX_VALUE;
-        for(int i:time){
-            min=Math.min(i,min);
+        for(int num:time){
+            min=Math.min(num,min);
         }
         long left=1;
         long right=(long)min*totalTrips;
