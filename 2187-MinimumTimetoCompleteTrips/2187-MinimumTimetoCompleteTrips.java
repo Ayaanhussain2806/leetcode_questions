@@ -1,4 +1,4 @@
-// Last updated: 9/28/2025, 7:11:50 PM
+// Last updated: 10/17/2025, 8:37:29 PM
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
         int min=Integer.MAX_VALUE;
@@ -11,14 +11,13 @@ class Solution {
             long mid=left+(right-left)/2;
             if(ispossible(time,mid,totalTrips)){
                 right=mid;
-            }
-            else{
+            }else{
                 left=mid+1;
             }
         }
         return left;
     }
-    public static boolean ispossible(int[] time,long givenTime,int totalTrips){
+    public static boolean ispossible(int[] time,long givenTime,long totalTrips){
         long t=0;
         for(int bus:time){
             t+=givenTime/bus;
