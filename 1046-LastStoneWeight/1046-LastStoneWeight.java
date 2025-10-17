@@ -1,18 +1,17 @@
-// Last updated: 10/17/2025, 11:42:47 PM
+// Last updated: 10/17/2025, 11:48:12 PM
 class Solution {
     public int lastStoneWeight(int[] stones) {
-        List<Integer> ll=new ArrayList<>();
+        PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
         for(int s:stones){
-            ll.add(s);
+            pq.add(s);
         }
-        while(ll.size()>1){
-            Collections.sort(ll);
-            int y=ll.remove(ll.size()-1);
-            int x=ll.remove(ll.size()-1);
-            if(x!=y){
-                ll.add(y-x);
+        while(pq.size()>1){
+            int y=pq.poll();
+            int x=pq.poll();
+            if(y!=x){
+                pq.add(y-x);
             }
         }
-        return ll.isEmpty() ? 0 : ll.get(0);
+        return pq.isEmpty()?0:pq.peek();
     }
 }
