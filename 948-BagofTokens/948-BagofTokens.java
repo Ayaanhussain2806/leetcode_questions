@@ -1,19 +1,15 @@
-// Last updated: 10/18/2025, 4:12:57 PM
+// Last updated: 10/18/2025, 4:33:41 PM
 class Solution {
-    public int numRescueBoats(int[] people, int limit) {
-        Arrays.sort(people);
-        int left=0;
-        int right=people.length-1;
-        int boats=0;
-        while(left<=right){
-            if(people[left]+people[right]<=limit){
-                right--;
-                left++;
+    public int brokenCalc(int startValue, int target) {
+        int steps=0;
+        while(target>startValue){
+            if(target%2==0){
+                target/=2;
             }else{
-                right--;
+                target+=1;
             }
-            boats++;
+            steps++;
         }
-        return boats;
+        return steps+(startValue-target);
     }
 }
