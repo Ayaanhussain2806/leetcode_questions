@@ -1,4 +1,4 @@
-// Last updated: 10/17/2025, 8:38:40 PM
+// Last updated: 10/18/2025, 11:41:25 AM
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
         int min=Integer.MAX_VALUE;
