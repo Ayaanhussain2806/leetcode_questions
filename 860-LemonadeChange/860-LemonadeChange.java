@@ -1,19 +1,29 @@
-// Last updated: 10/1/2025, 11:00:47 PM
+// Last updated: 10/18/2025, 11:54:35 AM
 class Solution {
-    public int numRescueBoats(int[] people, int limit) {
-        Arrays.sort(people); 
-        int left = 0, right = people.length - 1;
-        int boats = 0;
-
-        while (left <= right) {
-            if (people[left] + people[right] <= limit) {
-                left++; 
-                right--; 
-            } else {
-                right--; 
+    public boolean lemonadeChange(int[] bills) {
+        int five=0;
+        int ten=0;
+        for(int i=0;i<bills.length;i++){
+            if(bills[i]==5){
+                five++;
+            }else if(bills[i]==10){
+                if(five>=1){
+                    five--;
+                    ten++;
+                }else{
+                    return false;
+                }
+            }else{
+            if(ten>=1 && five>=1){
+                ten--;
+                five--;
+            }else if(five>=3){
+                five-=3;
+            }else{
+                return false;
             }
-            boats++; 
         }
-        return boats;
+        }
+        return true;
     }
 }
