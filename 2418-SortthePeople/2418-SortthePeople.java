@@ -1,4 +1,4 @@
-// Last updated: 10/14/2025, 10:40:23 PM
+// Last updated: 10/21/2025, 9:36:06 PM
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
         Object[][] people=new Object[names.length][2];
