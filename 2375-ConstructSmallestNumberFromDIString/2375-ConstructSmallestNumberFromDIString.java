@@ -1,12 +1,12 @@
-// Last updated: 10/30/2025, 11:37:50 PM
+// Last updated: 10/30/2025, 11:51:10 PM
 class Solution {
     public String smallestNumber(String pattern) {
-        return Construct(pattern);
+        return Construct_smallest(pattern);
     }
-    public static String Construct(String s){
-        int c=1;
+    public static String Construct_smallest(String s){
         int n=s.length();
         int[] ans=new int[n+1];
+        int c=1;
         Stack<Integer> st=new Stack<>();
         for(int i=0;i<=n;i++){
             if(i==n || s.charAt(i)=='I'){
