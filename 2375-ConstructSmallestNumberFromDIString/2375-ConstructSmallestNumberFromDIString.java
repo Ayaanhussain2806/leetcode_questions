@@ -1,9 +1,9 @@
-// Last updated: 10/30/2025, 11:51:10 PM
+// Last updated: 10/31/2025, 3:24:57 PM
 class Solution {
     public String smallestNumber(String pattern) {
-        return Construct_smallest(pattern);
+        return construct(pattern);
     }
-    public static String Construct_smallest(String s){
+    public static String construct(String s){
         int n=s.length();
         int[] ans=new int[n+1];
         int c=1;
