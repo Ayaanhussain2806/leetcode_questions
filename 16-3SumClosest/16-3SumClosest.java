@@ -1,27 +1,23 @@
-// Last updated: 10/13/2025, 10:46:31 PM
+// Last updated: 11/7/2025, 10:16:40 PM
 class Solution {
-    public long minimumTime(int[] time, int totalTrips) {
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
         int min=Integer.MAX_VALUE;
-        for(int i:time){
-            min=Math.min(i,min);
-        }
-        long left=1;
-        long right=(long)min*totalTrips;
-        while(left<right){
-            long mid=left+(right-left)/2;
-            if(ispossible(time,mid,totalTrips)){
-                right=mid;
-            }else{
-                left=mid+1;
+        for(int k=0;k<nums.length;k++){
+            int i=k+1;
+            int j=nums.length-1;
+            while(i<j){
+                int sum=nums[i]+nums[j]+nums[k];
+                if(Math.abs(target-sum)<Math.abs(target-min)){
+                    min=sum;
+                }
+                if(target>sum){
+                    i++;
+                }else{
+                    j--;
+                }
             }
         }
-        return left;
-    }
-    public static boolean ispossible(int[] time,long givenTime,long totalTrips){
-        long t=0;
-        for(int bus:time){
-            t+=givenTime/bus;
-        }
-        return t>=totalTrips;
+        return min;
     }
 }
