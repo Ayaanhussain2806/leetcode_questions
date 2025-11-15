@@ -1,25 +1,51 @@
-// Last updated: 11/15/2025, 10:54:20 PM
-class Solution {
-    public int calPoints(String[] operations) {
-        Stack<Integer> st=new Stack<>();
-        for(int i=0;i<operations.length;i++){
-            if(operations[i].equals("C")){
-                st.pop();
-            }else if(operations[i].equals("D")){
-                st.push(st.peek()*2);
-            }else if(operations[i].equals("+")){
-                int a=st.pop();
-                int b=st.peek();
-                st.push(a);
-                st.push(a+b);
-            }else{
-                st.push(Integer.parseInt(operations[i]));
+// Last updated: 11/15/2025, 11:34:40 PM
+class MyQueue {
+    Stack<Integer> input=new Stack<>();
+    Stack<Integer> output=new Stack<>();
+    int peekEle=-1;
+    public MyQueue() {
+        
+    }
+    
+    public void push(int x) {
+        if(input.isEmpty()){
+            peekEle=x;
+        }
+        input.push(x);
+    }
+    
+    public int pop() {
+        if(output.isEmpty()){
+            while(!input.isEmpty()){
+                output.push(input.peek());
+                input.pop();
             }
         }
-        int sum=0;
-        for(int x:st){
-            sum+=x;
+        int val=output.peek();
+        output.pop();
+        return val;
+    }
+    
+    public int peek() {
+        if(output.isEmpty()){
+            return peekEle;
         }
-        return sum;
+        return output.peek();
+    }
+    
+    public boolean empty() {
+        if(input.isEmpty() && output.isEmpty()){
+            return true;
+        }
+        return false;
     }
 }
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
