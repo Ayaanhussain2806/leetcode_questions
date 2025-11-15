@@ -1,4 +1,4 @@
-// Last updated: 11/15/2025, 10:34:27 PM
+// Last updated: 11/15/2025, 10:54:20 PM
 class Solution {
     public int calPoints(String[] operations) {
         Stack<Integer> st=new Stack<>();
@@ -6,13 +6,12 @@ class Solution {
             if(operations[i].equals("C")){
                 st.pop();
             }else if(operations[i].equals("D")){
-                int d=st.peek();
-                st.push(d*2);
+                st.push(st.peek()*2);
             }else if(operations[i].equals("+")){
-                int h=st.pop();
-                int f=st.peek();
-                st.push(h);
-                st.push(h+f);
+                int a=st.pop();
+                int b=st.peek();
+                st.push(a);
+                st.push(a+b);
             }else{
                 st.push(Integer.parseInt(operations[i]));
             }
