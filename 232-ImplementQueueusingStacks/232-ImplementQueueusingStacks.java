@@ -1,15 +1,15 @@
-// Last updated: 11/15/2025, 11:54:30 PM
+// Last updated: 11/15/2025, 11:56:01 PM
 class MyQueue {
     Stack<Integer> input=new Stack<>();
     Stack<Integer> output=new Stack<>();
-    int peekEle=-1;
+    int peekele=-1;
     public MyQueue() {
         
     }
     
     public void push(int x) {
         if(input.isEmpty()){
-            peekEle=x;
+            peekele=x;
         }
         input.push(x);
     }
@@ -28,7 +28,7 @@ class MyQueue {
     
     public int peek() {
         if(output.isEmpty()){
-            return peekEle;
+            return peekele;
         }
         return output.peek();
     }
