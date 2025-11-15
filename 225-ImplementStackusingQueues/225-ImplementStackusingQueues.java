@@ -1,29 +1,25 @@
-// Last updated: 10/25/2025, 11:26:24 PM
-class MyStack {
-    Queue<Integer> q1 = new LinkedList<>();
-    Queue<Integer> q2 = new LinkedList<>();
-
-    public void push(int x) {
-        q2.add(x);
-
-        while (!q1.isEmpty()) {
-            q2.add(q1.remove());
+// Last updated: 11/16/2025, 1:13:06 AM
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        Stack<Character> st=new Stack<>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='#'){
+                if(!st.isEmpty()) st.pop();
+            }else{
+                st.push(s.charAt(i));
+            }
         }
-
-        Queue<Integer> temp = q1;
-        q1 = q2;
-        q2 = temp;
-    }
-
-    public int pop() {
-        return q1.remove(); 
-    }
-
-    public int top() {
-        return q1.peek(); 
-    }
-
-    public boolean empty() {
-        return q1.isEmpty();
+        Stack<Character> stx=new Stack<>();
+        for(int i=0;i<t.length();i++){
+            if(t.charAt(i)=='#'){
+                if(!stx.isEmpty()) stx.pop();
+            }else{
+                stx.push(t.charAt(i));
+            }
+        }
+        if(st.equals(stx)){
+            return true;
+        }
+        return false;
     }
 }
