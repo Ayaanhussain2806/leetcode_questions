@@ -1,4 +1,4 @@
-// Last updated: 11/16/2025, 3:03:45 PM
+// Last updated: 11/17/2025, 11:46:35 PM
 class MyQueue {
     Stack<Integer> input=new Stack<>();
     Stack<Integer> output=new Stack<>();
