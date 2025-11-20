@@ -1,25 +1,22 @@
-// Last updated: 11/20/2025, 2:57:24 PM
+// Last updated: 11/20/2025, 3:05:03 PM
 class Solution {
     public int minimumArea(int[][] grid) {
-        int m = grid.length, n = grid[0].length;
-        int rMin = m; 
-        int cMin = n; 
-        int rMax = -1;
-        int cMax = -1;
+        int n=grid.length; int m=grid[0].length;
+        int sr=n,er=-1,sc=m,ec=-1;
 
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 1) {
-                    if (i < rMin) rMin = i;
-                    if (j < cMin) cMin = j;
-                    if (i > rMax) rMax = i;
-                    if (j > cMax) cMax = j;
+                    sr=Math.min(sr,i);
+                    er=Math.max(er,i);
+                    sc=Math.min(sc,j);
+                    ec=Math.max(ec,j);
                 }
             }
         }
 
-        if (rMax == -1) return 0;
-
-        return (rMax - rMin + 1) * (cMax - cMin + 1);
+        int h=er-sr+1;
+        int w=ec-sc+1;
+        return h*w;
     }
 }
