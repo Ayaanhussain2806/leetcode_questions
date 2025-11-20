@@ -1,4 +1,4 @@
-// Last updated: 11/20/2025, 3:05:03 PM
+// Last updated: 11/20/2025, 3:12:45 PM
 class Solution {
     public int minimumArea(int[][] grid) {
         int n=grid.length; int m=grid[0].length;
