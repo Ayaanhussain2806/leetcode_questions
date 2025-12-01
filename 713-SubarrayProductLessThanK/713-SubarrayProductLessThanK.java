@@ -1,23 +1,25 @@
-// Last updated: 12/2/2025, 4:25:49 AM
+// Last updated: 12/2/2025, 4:56:09 AM
 1class Solution {
-2    public boolean isValid(String s) {
-3        Stack<Character> st=new Stack<>();
-4        for(int i=0;i<s.length();i++){
-5            char ch=s.charAt(i);
-6            if(ch=='(' || ch=='{' || ch=='['){
-7                st.push(ch);
-8            }else{
-9                if(st.isEmpty()){
-10                    return false;
-11                }
-12                char top=st.peek();
-13                if(top=='(' && ch==')' || top=='{' && ch=='}' || top=='[' && ch==']'){
-14                    st.pop();
-15                }else{
-16                    return false;
-17                }
-18            }
-19        }
-20        return st.isEmpty();
-21    }
-22}
+2    public int numIslands(char[][] grid) {
+3        int count=0;
+4        for(int i=0;i<grid.length;i++){
+5            for(int j=0;j<grid[0].length;j++){
+6                if(grid[i][j]=='1'){
+7                    count++;
+8                    dfs(grid,i,j);
+9                }
+10            }
+11        }
+12        return count;
+13    }
+14    public static void dfs(char[][] grid,int i,int j){
+15        if(i<0 || j<0 || i>=grid.length || j>=grid[0].length || grid[i][j]=='0'){
+16            return ;
+17        }
+18        grid[i][j]='0';
+19        dfs(grid,i-1,j);
+20        dfs(grid,i+1,j);
+21        dfs(grid,i,j-1);
+22        dfs(grid,i,j+1);
+23    }
+24}
