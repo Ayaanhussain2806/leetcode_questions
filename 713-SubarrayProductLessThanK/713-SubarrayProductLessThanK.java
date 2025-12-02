@@ -1,4 +1,4 @@
-// Last updated: 12/2/2025, 5:14:30 AM
+// Last updated: 12/2/2025, 5:28:28 AM
 1class Solution {
 2    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
 3        int oldcolor=image[sr][sc];
@@ -13,8 +13,8 @@
 12            return ;
 13        }
 14        image[i][j]=color;
-15        dfs(image,i-1,j,oldcolor,color);
-16        dfs(image,i+1,j,oldcolor,color);
+15        dfs(image,i+1,j,oldcolor,color);
+16        dfs(image,i-1,j,oldcolor,color);
 17        dfs(image,i,j-1,oldcolor,color);
 18        dfs(image,i,j+1,oldcolor,color);
 19    }
