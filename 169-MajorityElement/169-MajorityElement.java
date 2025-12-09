@@ -1,15 +1,7 @@
-// Last updated: 8/7/2025, 11:38:18 AM
-class Solution {
-    public int majorityElement(int[] nums) {
-        int cnt = 0, m = 0;
-        for (int x : nums) {
-            if (cnt == 0) {
-                m = x;
-                cnt = 1;
-            } else {
-                cnt += m == x ? 1 : -1;
-            }
-        }
-        return m;
-    }
-}
+// Last updated: 12/9/2025, 6:45:33 PM
+1class Solution {
+2    public int majorityElement(int[] nums) {
+3        Arrays.sort(nums);
+4        return nums[nums.length/2];
+5    }
+6}
