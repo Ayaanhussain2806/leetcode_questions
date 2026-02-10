@@ -1,0 +1,15 @@
+// Last updated: 2/10/2026, 3:10:55 PM
+class Solution {
+    public double minimumAverage(int[] nums) {
+        int n=nums.length/2;
+        double[] arr=new double[n];
+        Arrays.sort(nums);
+        for(int i=0;i<n;i++){
+            arr[i]=(nums[i]+nums[nums.length-i-1])/2.0;
+            
+            
+        }
+        Arrays.sort(arr);
+        return arr[0];
+    }
+}
