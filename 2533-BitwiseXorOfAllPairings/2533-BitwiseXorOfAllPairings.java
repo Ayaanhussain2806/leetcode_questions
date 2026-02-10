@@ -1,0 +1,24 @@
+// Last updated: 2/10/2026, 3:11:42 PM
+class Solution {
+    public int xorAllNums(int[] nums1, int[] nums2) {
+        int n=nums1.length;
+        int m=nums2.length;
+        if(n%2==0 && m%2==0) return 0;
+        int xor1=Bitwise(nums1);
+        int xor2=Bitwise(nums2);
+        if(n%2==1 && m%2==1){
+            return xor1^xor2;
+        }else if(n%2==1){
+            return xor2;
+        }else{
+            return xor1;
+        }
+    }
+    public static int Bitwise(int[] arr){
+        int sum=0;
+        for(int v:arr){
+            sum^=v;
+        }
+        return sum;
+    }
+}
